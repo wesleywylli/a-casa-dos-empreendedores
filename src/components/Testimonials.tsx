@@ -32,12 +32,17 @@ const testimonials = [
   }
 ];
 
+// Each card width (px) + gap (px)
+const CARD_W = 380;
+const CARD_GAP = 32;
+const SINGLE_TRACK_W = testimonials.length * (CARD_W + CARD_GAP);
+
 export default function Testimonials() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section className="py-32 bg-anthracite overflow-hidden">
-      <div className="container mx-auto px-6 mb-20">
+    <section className="py-24 sm:py-32 bg-anthracite overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
         <span className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block">Depoimentos</span>
         <h2 className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter">
           Vozes da <span className="text-concrete/30 font-normal lowercase">Elite</span>
@@ -50,29 +55,32 @@ export default function Testimonials() {
         onMouseLeave={() => setIsPaused(false)}
       >
         <motion.div
-          className="flex whitespace-nowrap gap-8 py-4"
-          animate={isPaused ? { x: -1035 } : { x: [0, -1035] }}
+          className="flex gap-8 py-4"
+          animate={{ x: isPaused ? 0 : [-0, -SINGLE_TRACK_W] }}
           transition={{
-            duration: 30,
+            duration: 28,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
+            repeatType: 'loop'
           }}
+          style={{ willChange: 'transform' }}
         >
+          {/* Duplicate cards for seamless loop */}
           {[...testimonials, ...testimonials].map((t, i) => (
             <div
               key={`${t.id}-${i}`}
-              className="inline-block w-[450px] bg-white/5 border border-concrete/10 p-10 rounded-[1rem] backdrop-blur-sm"
+              className="shrink-0 w-[320px] sm:w-[380px] bg-white/5 border border-concrete/10 p-8 sm:p-10 rounded-[1rem] backdrop-blur-sm"
             >
-              <div className="flex items-center gap-6 mb-8">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-cognac/30">
+              <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-cognac/30 shrink-0">
                   <img src={t.image} alt={t.name} className="w-full h-full object-cover grayscale" referrerPolicy="no-referrer" loading="lazy" />
                 </div>
                 <div>
-                  <h4 className="font-sans font-bold text-white text-lg">{t.name}</h4>
+                  <h4 className="font-sans font-bold text-white text-base sm:text-lg">{t.name}</h4>
                   <p className="font-mono text-[10px] text-cognac uppercase tracking-widest">{t.company}</p>
                 </div>
               </div>
-              <p className="font-sans text-concrete/80 text-lg leading-relaxed italic whitespace-normal">
+              <p className="font-sans text-concrete/80 text-base sm:text-lg leading-relaxed italic whitespace-normal">
                 "{t.text}"
               </p>
             </div>

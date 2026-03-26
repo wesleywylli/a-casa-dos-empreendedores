@@ -118,10 +118,10 @@ export default function Hero() {
         <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-anthracite to-transparent z-10" />
       </div>
 
-      <div className="container relative z-20 mx-auto px-6 h-full flex flex-col items-center justify-between py-20">
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 h-full flex flex-col items-center justify-between py-16 md:py-20">
         {/* Top Branding */}
         <div className="flex flex-col items-center">
-          <span className="font-sans font-bold text-2xl text-white tracking-tighter uppercase leading-none">
+          <span className="font-sans font-bold text-xl sm:text-2xl text-white tracking-tighter uppercase leading-none">
             A Casa
           </span>
           <span className="font-mono text-[8px] text-cognac uppercase tracking-[0.3em] leading-none mt-2">
@@ -130,16 +130,17 @@ export default function Hero() {
         </div>
 
         {/* Center Content */}
-        <div ref={titleRef} className="flex flex-col items-center text-center max-w-5xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-cognac mb-8 opacity-80">
+        <div ref={titleRef} className="flex flex-col items-center text-center max-w-5xl w-full px-2">
+          <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.4em] sm:tracking-[0.5em] text-cognac mb-4 sm:mb-8 opacity-80">
             A Casa dos Empreendedores
           </span>
-          <h1 className="font-sans text-6xl md:text-[120px] font-bold uppercase tracking-tighter text-white leading-[0.85] mb-10">
+          <h1 className="font-sans text-[clamp(2.5rem,10vw,7.5rem)] font-bold uppercase tracking-tighter text-white leading-[0.85] mb-6 sm:mb-10">
             Epicentro do <br />
             <span className="text-cognac font-normal lowercase">Empreendedorismo</span>
           </h1>
-          <p className="font-sans text-concrete/60 text-base md:text-lg max-w-xl mb-12 leading-relaxed">
-            Transformando o estado através de conexões de alto impacto, <br className="hidden md:block" />
+          <p className="font-sans text-concrete/60 text-sm sm:text-base md:text-lg max-w-xl mb-8 sm:mb-12 leading-relaxed">
+            Transformando o estado através de conexões de alto impacto,{' '}
+            <span className="hidden md:inline"><br /></span>
             conhecimento estratégico e escala para o próximo nível.
           </p>
         </div>
@@ -147,7 +148,7 @@ export default function Hero() {
         {/* Bottom Action */}
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="group flex flex-col items-center gap-6 interactive"
+          className="group flex flex-col items-center gap-4 sm:gap-6 interactive"
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full border border-cognac/30 flex items-center justify-center group-hover:bg-cognac transition-all duration-500 animate-pulse-subtle">
@@ -157,7 +158,7 @@ export default function Hero() {
               Assistir Manifesto
             </span>
           </div>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-cognac/50 to-transparent" />
+          <div className="w-[1px] h-10 sm:h-16 bg-gradient-to-b from-cognac/50 to-transparent" />
         </button>
       </div>
 

@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#hero" className="group flex items-center">
           <img
-            src="src/assets/img-logo.png"
+            src="/src/assets/img-logo.png"
             alt="A Casa dos Empreendedores"
             className="h-9 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
           />

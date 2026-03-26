@@ -37,6 +37,9 @@ export default function Events() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // Only apply sticky stack effect on desktop (min-width: 768px)
+    if (window.innerWidth < 768) return;
+
     const ctx = gsap.context(() => {
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
@@ -78,7 +81,7 @@ export default function Events() {
           <div
             key={event.id}
             ref={el => cardsRef.current[index] = el}
-            className="h-screen w-full flex items-center justify-center sticky top-0 overflow-hidden"
+            className="h-[70vh] md:h-screen w-full flex items-center justify-center md:sticky md:top-0 overflow-hidden"
           >
             <div className="absolute inset-0 z-0">
               <img
@@ -103,7 +106,7 @@ export default function Events() {
                   </span>
                 </div>
 
-                <h3 className="font-sans text-6xl md:text-9xl font-bold text-white uppercase tracking-tighter mb-12 leading-[0.9]">
+                <h3 className="font-sans text-[clamp(2.5rem,8vw,7rem)] font-bold text-white uppercase tracking-tighter mb-8 sm:mb-12 leading-[0.9]">
                   {event.title}
                 </h3>
 

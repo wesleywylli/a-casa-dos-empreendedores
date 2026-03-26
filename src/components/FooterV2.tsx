@@ -30,7 +30,7 @@ export default function FooterV2() {
       {/* ─────────────── Background ─────────────── */}
       <div className="absolute inset-0">
         <img
-          src="src/assets/img-hall.jpg"
+          src="/src/assets/img-hall.jpg"
           alt="Hall da Casa dos Empreendedores"
           className="w-full h-full object-cover object-center"
         />
@@ -78,7 +78,7 @@ export default function FooterV2() {
             </p>
 
             {/* Botão */}
-            <MagneticButton className="inline-flex items-center gap-3 px-25 py-5 text-base">
+            <MagneticButton className="inline-flex items-center gap-3 px-16 py-5 text-base">
               Quero Fazer Parte
             </MagneticButton>
           </motion.div>
@@ -96,9 +96,10 @@ export default function FooterV2() {
             {/* Col 1: Logo + descrição */}
             <div className="space-y-5">
               <img
-                src="src/assets/img-logo.png"
+                src="/src/assets/img-logo.png"
                 alt="A Casa dos Empreendedores"
-                className="h-25 w-auto object-contain brightness-0 invert"
+                className="w-auto object-contain brightness-0 invert"
+                style={{ height: '6rem' }}
               />
               <p className="font-sans text-white/50 text-sm leading-relaxed max-w-xs">
                 O ecossistema de alto desempenho para líderes e fundadores que

@@ -8,24 +8,24 @@ const founders = [
     name: 'Eder Rodrigues',
     role: 'Mestre em Operações',
     description: 'O arquiteto da eficiência. Eder transforma processos complexos em máquinas de lucro.',
-    image: 'src/assets/img-eder.jpg',
-    color: 'rgba(184, 176, 165, 0.15)' // Silver/Concrete
+    image: '/src/assets/img-eder.jpg',
+    color: 'rgba(184, 176, 165, 0.15)'
   },
   {
     id: 'matheus',
     name: 'Matheus Borges',
     role: 'Visionário & Estrategista',
     description: 'Especialista em escala e novos mercados, Matheus traz a visão de futuro para a Casa.',
-    image: 'src/assets/img-matheus.jpg',
-    color: 'rgba(255, 179, 71, 0.15)' // Amber
+    image: '/src/assets/img-matheus.jpg',
+    color: 'rgba(255, 179, 71, 0.15)'
   },
   {
     id: 'paulo',
     name: 'Paulo Lemes',
     role: 'Líder de Comunidade',
     description: 'Conector nato. Paulo é o coração pulsante do networking na Casa dos Empreendedores.',
-    image: 'src/assets/img-paulo.jpg',
-    color: 'rgba(204, 161, 84, 0.15)' // Bronze/Cognac (#cca154)
+    image: '/src/assets/img-paulo.jpg',
+    color: 'rgba(204, 161, 84, 0.15)'
   }
 ];
 
@@ -57,14 +57,14 @@ export default function Founders() {
           </h2>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 h-auto md:h-[600px]">
+        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 h-auto md:h-[600px]">
           {founders.map((founder) => (
             <motion.div
               key={founder.id}
               onMouseEnter={() => setHoveredId(founder.id)}
               onMouseLeave={() => setHoveredId(null)}
               className={cn(
-                "relative group cursor-pointer overflow-hidden rounded-[1rem] border border-concrete/10 bg-white/5 transition-all duration-700 h-[400px] md:h-full",
+                "relative group cursor-pointer overflow-hidden rounded-[1rem] border border-concrete/10 bg-white/5 transition-all duration-700 h-[280px] sm:h-[360px] md:h-full",
                 hoveredId === founder.id ? "md:flex-[2]" : "md:flex-1"
               )}
               layout
@@ -78,7 +78,7 @@ export default function Founders() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-anthracite via-anthracite/20 to-transparent opacity-80" />
 
-              <div className="absolute bottom-0 left-0 p-10 w-full">
+              <div className="absolute bottom-0 left-0 p-6 sm:p-10 w-full">
                 <div className="overflow-hidden">
                   <motion.p
                     className="font-mono text-[10px] uppercase tracking-widest text-cognac mb-2"

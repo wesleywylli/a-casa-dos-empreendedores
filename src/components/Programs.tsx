@@ -55,11 +55,11 @@ export default function Programs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
           {/* Diagnostic Shuffler */}
-          <div className="relative h-[500px] flex items-center justify-center">
+          <div className="relative h-[380px] sm:h-[500px] flex items-center justify-center">
 
             <div className="absolute inset-0 bg-amber-glow/5 blur-[100px] rounded-full" />
 
-            <div className="relative w-full max-w-md h-[400px]">
+            <div className="relative w-full max-w-md h-[320px] sm:h-[400px]">
               <AnimatePresence mode="popLayout" initial={true}>
                 <motion.div
                   key={programs[activeIndex].id}
@@ -72,7 +72,7 @@ export default function Programs() {
                     stiffness: 120,
                     opacity: { duration: 0.4 }
                   }}
-                  className="absolute inset-0 bg-white/5 border border-concrete/20 p-12 rounded-[1rem] backdrop-blur-xl shadow-2xl cursor-pointer"
+                  className="absolute inset-0 bg-white/5 border border-concrete/20 p-8 sm:p-12 rounded-[1rem] backdrop-blur-xl shadow-2xl cursor-pointer"
                   onClick={nextProgram}
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
