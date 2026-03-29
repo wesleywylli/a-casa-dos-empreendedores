@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import { cn } from '@/src/lib/utils';
+import imgLogo from '../public/assets/img-logo.png';
 
 const navLinks = [
   { name: 'A Casa', href: '#hero' },
@@ -50,9 +51,9 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 w-full z-[100] transition-all duration-700 px-6 py-6 md:px-12",
+        "fixed top-0 left-0 w-full z-[100] transition-all duration-700 px-4 sm:px-6 py-4 md:px-12 md:py-6",
         isScrolled && !isAtFooter
-          ? "py-4 bg-anthracite/80 backdrop-blur-md border-b border-concrete/10 translate-y-0 opacity-100"
+          ? "py-3 md:py-4 bg-anthracite/80 backdrop-blur-md border-b border-concrete/10 translate-y-0 opacity-100"
           : "-translate-y-full opacity-0 pointer-events-none"
       )}
     >
@@ -60,7 +61,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#hero" className="group flex items-center">
           <img
-            src="/src/assets/img-logo.png"
+            src={imgLogo}
             alt="A Casa dos Empreendedores"
             className="h-9 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
           />

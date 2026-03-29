@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
+import imgEder from '../public/assets/img-eder.jpg';
+import imgMatheus from '../public/assets/img-matheus.jpg';
+import imgPaulo from '../public/assets/img-paulo.jpg';
 
 const founders = [
   {
@@ -8,7 +11,7 @@ const founders = [
     name: 'Eder Rodrigues',
     role: 'Mestre em Operações',
     description: 'O arquiteto da eficiência. Eder transforma processos complexos em máquinas de lucro.',
-    image: '/src/assets/img-eder.jpg',
+    image: imgEder,
     color: 'rgba(184, 176, 165, 0.15)'
   },
   {
@@ -16,7 +19,7 @@ const founders = [
     name: 'Matheus Borges',
     role: 'Visionário & Estrategista',
     description: 'Especialista em escala e novos mercados, Matheus traz a visão de futuro para a Casa.',
-    image: '/src/assets/img-matheus.jpg',
+    image: imgMatheus,
     color: 'rgba(255, 179, 71, 0.15)'
   },
   {
@@ -24,16 +27,24 @@ const founders = [
     name: 'Paulo Lemes',
     role: 'Líder de Comunidade',
     description: 'Conector nato. Paulo é o coração pulsante do networking na Casa dos Empreendedores.',
-    image: '/src/assets/img-paulo.jpg',
+    image: imgPaulo,
     color: 'rgba(204, 161, 84, 0.15)'
   }
 ];
 
 export default function Founders() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
-    <section id="founders" className="relative py-32 bg-anthracite overflow-hidden">
+    <section id="founders" className="relative py-20 bg-anthracite overflow-hidden">
       {/* Dynamic Background Glow */}
       <AnimatePresence>
         {hoveredId && (
@@ -49,23 +60,36 @@ export default function Founders() {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="mb-20">
-          <span className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block">A Tríade</span>
-          <h2 className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-12">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="font-mono text-[10px] uppercase tracking-[0.4em] text-cognac mb-3 block"
+          >
+            A Tríade
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-sans text-4xl sm:text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter"
+          >
             Os Fundadores
-          </h2>
+          </motion.h2>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 h-auto md:h-[600px]">
+        <div className="flex flex-col md:flex-row gap-6 h-auto md:h-[600px]">
           {founders.map((founder) => (
             <motion.div
               key={founder.id}
               onMouseEnter={() => setHoveredId(founder.id)}
               onMouseLeave={() => setHoveredId(null)}
               className={cn(
-                "relative group cursor-pointer overflow-hidden rounded-[1rem] border border-concrete/10 bg-white/5 transition-all duration-700 h-[280px] sm:h-[360px] md:h-full",
-                hoveredId === founder.id ? "md:flex-[2]" : "md:flex-1"
+                "relative group cursor-pointer overflow-hidden rounded-[1rem] border border-concrete/10 bg-white/5 transition-all duration-700 h-auto min-h-[360px] md:h-full",
+                hoveredId === founder.id ? "md:flex-[3]" : "md:flex-1"
               )}
               layout
             >
@@ -92,8 +116,8 @@ export default function Founders() {
                 <motion.div
                   initial={false}
                   animate={{
-                    height: hoveredId === founder.id ? 'auto' : 0,
-                    opacity: hoveredId === founder.id ? 1 : 0
+                    height: (isMobile || hoveredId === founder.id) ? 'auto' : 0,
+                    opacity: (isMobile || hoveredId === founder.id) ? 1 : 0
                   }}
                   className="overflow-hidden"
                 >

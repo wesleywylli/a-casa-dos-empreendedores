@@ -14,8 +14,8 @@
 }
 
 @layer base {
-  body {
-    @apply bg-anthracite text-concrete selection:bg-cognac selection:text-white antialiased;
+  html, body {
+    @apply bg-anthracite text-concrete selection:bg-cognac selection:text-white antialiased overflow-x-hidden w-full;
   }
 }
 

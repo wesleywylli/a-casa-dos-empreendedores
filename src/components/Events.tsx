@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,12 +69,24 @@ export default function Events() {
   }, []);
 
   return (
-    <section ref={containerRef} id="events" className="bg-anthracite">
-      <div className="container mx-auto px-6 py-32">
-        <span className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block">Calendário</span>
-        <h2 className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter mb-20">
+    <section ref={containerRef} id="events" className="bg-anthracite py-20">
+      <div className="container mx-auto px-4 sm:px-6 mb-12">
+        <motion.span 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="font-mono text-[10px] uppercase tracking-[0.4em] text-cognac mb-3 block"
+        >
+          Calendário
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-sans text-4xl sm:text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter mb-12 sm:mb-20"
+        >
           Eventos <span className="text-concrete/30 font-normal lowercase">Exclusivos</span>
-        </h2>
+        </motion.h2>
       </div>
 
       <div className="flex flex-col">
@@ -81,7 +94,7 @@ export default function Events() {
           <div
             key={event.id}
             ref={el => cardsRef.current[index] = el}
-            className="h-[70vh] md:h-screen w-full flex items-center justify-center md:sticky md:top-0 overflow-hidden"
+            className="h-auto min-h-[50vh] md:h-screen w-full flex items-center justify-center md:sticky md:top-0 overflow-hidden py-12 md:py-0"
           >
             <div className="absolute inset-0 z-0">
               <img
@@ -106,7 +119,7 @@ export default function Events() {
                   </span>
                 </div>
 
-                <h3 className="font-sans text-[clamp(2.5rem,8vw,7rem)] font-bold text-white uppercase tracking-tighter mb-8 sm:mb-12 leading-[0.9]">
+                <h3 className="font-sans text-[clamp(1.75rem,8vw,7rem)] font-bold text-white uppercase tracking-tighter mb-6 sm:mb-12 leading-[0.9]">
                   {event.title}
                 </h3>
 
@@ -124,7 +137,7 @@ export default function Events() {
             </div>
 
             {/* Architectural Border */}
-            <div className="absolute inset-12 border border-concrete/10 rounded-[2.5rem] pointer-events-none" />
+            <div className="absolute inset-4 sm:inset-12 border border-concrete/10 rounded-[1.5rem] sm:rounded-[2.5rem] pointer-events-none" />
           </div>
         ))}
       </div>

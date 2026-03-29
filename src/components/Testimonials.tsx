@@ -32,21 +32,31 @@ const testimonials = [
   }
 ];
 
-// Each card width (px) + gap (px)
-const CARD_W = 380;
-const CARD_GAP = 32;
-const SINGLE_TRACK_W = testimonials.length * (CARD_W + CARD_GAP);
+// Infinite scroll handled via CSS animation (animate-scroll-x) defined in index.css
 
 export default function Testimonials() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section className="py-24 sm:py-32 bg-anthracite overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
-        <span className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block">Depoimentos</span>
-        <h2 className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter">
+    <section className="py-20 bg-anthracite overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 mb-12">
+        <motion.span 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block"
+        >
+          Depoimentos
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter"
+        >
           Vozes da <span className="text-concrete/30 font-normal lowercase">Elite</span>
-        </h2>
+        </motion.h2>
       </div>
 
       <div
@@ -54,16 +64,11 @@ export default function Testimonials() {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <motion.div
-          className="flex gap-8 py-4"
-          animate={{ x: isPaused ? 0 : [-0, -SINGLE_TRACK_W] }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "linear",
-            repeatType: 'loop'
-          }}
-          style={{ willChange: 'transform' }}
+        <div
+          className="flex gap-8 py-4 animate-scroll-x"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
         >
           {/* Duplicate cards for seamless loop */}
           {[...testimonials, ...testimonials].map((t, i) => (
@@ -85,7 +90,7 @@ export default function Testimonials() {
               </p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -49,17 +49,17 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="py-32 bg-anthracite relative overflow-hidden"
+      className="py-20 bg-anthracite relative overflow-hidden"
     >
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Diagnostic Shuffler */}
-          <div className="relative h-[380px] sm:h-[500px] flex items-center justify-center">
+          <div className="relative h-[420px] sm:h-[500px] flex items-center justify-center order-2 lg:order-1 mt-8 lg:mt-0">
 
             <div className="absolute inset-0 bg-amber-glow/5 blur-[100px] rounded-full" />
 
-            <div className="relative w-full max-w-md h-[320px] sm:h-[400px]">
+            <div className="relative w-full max-w-sm h-[360px] sm:h-[400px]">
               <AnimatePresence mode="popLayout" initial={true}>
                 <motion.div
                   key={programs[activeIndex].id}
@@ -107,17 +107,40 @@ export default function Programs() {
           </div>
 
           {/* Content */}
-          <div className="space-y-12">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8 lg:space-y-12 order-1 lg:order-2"
+          >
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block">Programas & Imersões</span>
-              <h2 className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter mb-8">
+              <motion.span 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="font-mono text-xs uppercase tracking-[0.4em] text-cognac mb-4 block"
+              >
+                Programas & Imersões
+              </motion.span>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="font-sans text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter mb-8"
+              >
                 Arquitetura de <br /> <span className="text-concrete/30 font-normal lowercase">Performance</span>
-              </h2>
-              <p className="font-sans text-concrete/70 text-lg max-w-xl leading-relaxed">
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.7 }}
+                transition={{ delay: 0.6 }}
+                className="font-sans text-concrete/70 text-lg max-w-xl leading-relaxed"
+              >
                 Nossos programas não são cursos. São artefatos funcionais desenhados para diagnosticar e resolver os gargalos que impedem sua empresa de chegar ao próximo nível.
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

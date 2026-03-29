@@ -15,16 +15,16 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-32">
           <div>
-            <h2 className="font-sans text-5xl md:text-8xl font-extrabold text-white uppercase tracking-tighter mb-12 leading-[0.85]">
+            <h2 className="font-sans text-4xl sm:text-5xl md:text-8xl font-extrabold text-white uppercase tracking-tighter mb-10 sm:mb-12 leading-[0.85]">
               Pronto para o <br /> <span className="text-cognac font-normal lowercase">Próximo Nível?</span>
             </h2>
-            <p className="font-sans text-concrete/70 text-xl max-w-md mb-12">
+            <p className="font-sans text-concrete/70 text-lg sm:text-xl max-w-md mb-10 sm:mb-12">
               A Casa dos Empreendedores não é para todos. É para quem busca a excelência e o topo do mercado.
             </p>
-            <MagneticButton className="px-12 py-6 text-lg">Candidatar-se ao Clube</MagneticButton>
+            <MagneticButton className="px-10 sm:px-12 py-5 sm:py-6 text-base sm:text-lg">Candidatar-se ao Clube</MagneticButton>
           </div>
 
-          <div className="grid grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
             <div className="space-y-8">
               <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-concrete/40">Navegação</h4>
               <ul className="space-y-4">

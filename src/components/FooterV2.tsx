@@ -30,7 +30,7 @@ export default function FooterV2() {
       {/* ─────────────── Background ─────────────── */}
       <div className="absolute inset-0">
         <img
-          src="/src/assets/img-hall.jpg"
+          src="/src/public/assets/img-hall.jpg"
           alt="Hall da Casa dos Empreendedores"
           className="w-full h-full object-cover object-center"
         />
@@ -56,12 +56,12 @@ export default function FooterV2() {
 
       {/* ─────────────── Layout em flex column ─────────────── */}
       <div
-        className="relative z-10 flex flex-col justify-between"
+        className="relative z-10 flex flex-col justify-between pb-20 md:pb-0"
         style={{ minHeight: '100vh' }}
       >
 
         {/* ── CTA: posicionado no centro-baixo da imagem ── */}
-        <div className="flex-1 flex items-end justify-center pb-16 px-6">
+        <div className="flex-1 flex items-end justify-center pb-12 md:pb-16 px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,9 +70,12 @@ export default function FooterV2() {
             className="text-center max-w-3xl"
           >
 
+            <h2 className="font-sans text-[clamp(2.5rem,8vw,4.5rem)] font-bold text-white uppercase tracking-tighter mb-4 md:mb-6 leading-none">
+              Pronto para Escalar?
+            </h2>
 
             {/* Subhead */}
-            <p className="font-sans text-white/60 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
+            <p className="font-sans text-white/60 text-base md:text-xl leading-relaxed mb-8 md:mb-10 max-w-xl mx-auto">
               Junte-se ao ecossistema de líderes e fundadores que estão
               redefinindo o empreendedorismo em Mato Grosso.
             </p>
@@ -96,10 +99,10 @@ export default function FooterV2() {
             {/* Col 1: Logo + descrição */}
             <div className="space-y-5">
               <img
-                src="/src/assets/img-logo.png"
+                src="/src/public/assets/img-logo.png"
                 alt="A Casa dos Empreendedores"
-                className="w-auto object-contain brightness-0 invert"
-                style={{ height: '6rem' }}
+                className="w-auto max-w-[180px] sm:max-w-none object-contain brightness-0 invert"
+                style={{ height: 'auto', maxHeight: '4rem' }}
               />
               <p className="font-sans text-white/50 text-sm leading-relaxed max-w-xs">
                 O ecossistema de alto desempenho para líderes e fundadores que
